@@ -1,0 +1,32 @@
+{
+  "leads": [
+    {
+      "product_line": "Campus ID",
+      "product_name": "Mobile Credential by Transact",
+      "trigger": "Physical ID cards costly to replace",
+      "trigger_quote": "Badge printer system – Legacy physical ID cards",
+      "gap_analysis": "Physical ID card program drives recurring costs for printing, replacement, and badge printer maintenance. Mobile credential eliminates physical media entirely.",
+      "recommended_action": "Propose Campus ID mobile credential pilot with Apple Wallet / Google Wallet integration.",
+      "confidence": "high"
+    },
+    {
+      "product_line": "Campus Commerce",
+      "product_name": "Transact Insights / Unified Reporting",
+      "trigger": "No reporting across dining sites",
+      "trigger_quote": "No reporting across dining sites",
+      "gap_analysis": "Multiple dining locations with separate tracking creates blind spots in revenue analysis, menu performance, and utilization trends. Unified reporting consolidates all transaction data.",
+      "recommended_action": "Demo Transact Insights dashboard showing cross-location revenue, peak usage, and menu item performance.",
+      "confidence": "high"
+    },
+    {
+      "product_line": "Integrated Payments",
+      "product_name": "Sponsor Payments / Third-Party Billing",
+      "trigger": "Separate payroll deduction reconciliation",
+      "trigger_quote": "Separate payroll deduction reconciliation",
+      "gap_analysis": "Manual payroll deduction reconciliation via Kronos export is error-prone and labor-intensive. Integrated Payments unifies payment processing including payroll deduct, meal plans, and declining balance.",
+      "recommended_action": "Show Integrated Payments payroll deduction auto-reconciliation workflow vs. current manual process.",
+      "confidence": "medium"
+    }
+  ],
+  "_source": "fixture"
+}

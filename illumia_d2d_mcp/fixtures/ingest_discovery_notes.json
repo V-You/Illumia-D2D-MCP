@@ -1,0 +1,55 @@
+{
+  "parsed_notes": {
+    "locations": [
+      {
+        "name": "Main Cafeteria",
+        "type": "dining",
+        "register_count": 4,
+        "details": "4 POS registers, high traffic at peak lunch hours"
+      },
+      {
+        "name": "Coffee Kiosk – Lobby",
+        "type": "retail",
+        "register_count": 1,
+        "details": "1 self-serve kiosk, wants contactless"
+      },
+      {
+        "name": "Gift Shop",
+        "type": "retail",
+        "register_count": 2,
+        "details": "2 registers, handles payroll deductions for staff"
+      },
+      {
+        "name": "Vending – 3rd Floor",
+        "type": "vending",
+        "register_count": 0,
+        "details": "6 vending machines, currently cash only"
+      }
+    ],
+    "hardware": [
+      {"item": "POS Terminal", "count": 6, "context": "Cafeteria (4) + Gift Shop (2)"},
+      {"item": "Self-service Kiosk", "count": 1, "context": "Coffee Kiosk – Lobby"},
+      {"item": "Vending Machine", "count": 6, "context": "3rd Floor"}
+    ],
+    "payment_methods": [
+      {"method": "Payroll Deduction", "context": "Gift Shop staff purchases"},
+      {"method": "Campus Card", "context": "All locations, NFC tap"},
+      {"method": "Credit/Debit", "context": "Cafeteria and Gift Shop"},
+      {"method": "Cash", "context": "Vending only (want to remove)"}
+    ],
+    "integrations": [
+      {"system": "CBORD Menu Management", "context": "Cafeteria menus"},
+      {"system": "Kronos Workforce", "context": "Payroll deduction feeds"},
+      {"system": "Badge printer system", "context": "Legacy physical ID cards"}
+    ],
+    "pain_points": [
+      "Cash-only vending losing revenue",
+      "No reporting across dining sites",
+      "Physical ID cards costly to replace",
+      "Separate payroll deduction reconciliation",
+      "No mobile ordering option"
+    ],
+    "staff_count": 45
+  },
+  "_source": "fixture"
+}

@@ -1,0 +1,82 @@
+{
+  "product_matches": [
+    {
+      "name": "Quickcharge POS – Desktop",
+      "sku": "QC-POS-DT",
+      "category": "hardware",
+      "subcategory": "point-of-sale",
+      "match_reason": "6 POS registers across Cafeteria and Gift Shop",
+      "dependencies": ["Quickcharge Server", "Payment Gateway"]
+    },
+    {
+      "name": "Quickcharge Self-Service Kiosk",
+      "sku": "QC-KIOSK-SS",
+      "category": "hardware",
+      "subcategory": "self-service",
+      "match_reason": "1 self-serve kiosk at Coffee Kiosk – Lobby",
+      "dependencies": ["Quickcharge Server"]
+    },
+    {
+      "name": "Quickcharge Mobile Ordering",
+      "sku": "QC-MOB-ORD",
+      "category": "software",
+      "subcategory": "mobile",
+      "match_reason": "Pain point: no mobile ordering option",
+      "dependencies": ["Quickcharge Server", "CBORD Menu Management"]
+    },
+    {
+      "name": "Quickcharge Cashless Vending",
+      "sku": "QC-VEND-CL",
+      "category": "hardware",
+      "subcategory": "vending",
+      "match_reason": "6 vending machines, cash-only → cashless conversion",
+      "dependencies": ["Quickcharge Server"]
+    },
+    {
+      "name": "Quickcharge Payroll Deduction Module",
+      "sku": "QC-PAY-DED",
+      "category": "software",
+      "subcategory": "payment-types",
+      "match_reason": "Payroll deduction at Gift Shop, Kronos integration",
+      "dependencies": ["Quickcharge Server", "Kronos Workforce"]
+    },
+    {
+      "name": "Quickcharge Server",
+      "sku": "QC-SRV",
+      "category": "infrastructure",
+      "subcategory": "core",
+      "match_reason": "Required by all Quickcharge endpoints",
+      "dependencies": []
+    },
+    {
+      "name": "Payment Gateway – Campus Card",
+      "sku": "QC-GW-CC",
+      "category": "infrastructure",
+      "subcategory": "integration",
+      "match_reason": "Campus card NFC tap at all locations",
+      "dependencies": ["Quickcharge Server"]
+    }
+  ],
+  "workflow_graph": "graph TD\n    subgraph Dining\n        CAF[Main Cafeteria<br/>4x POS Desktop]\n        KIOSK[Coffee Kiosk<br/>1x Self-Service]\n        MOBILE[Mobile Ordering<br/>App]\n    end\n\n    subgraph Retail\n        GIFT[Gift Shop<br/>2x POS Desktop]\n    end\n\n    subgraph Vending\n        VEND[3rd Floor<br/>6x Cashless Adapters]\n    end\n\n    subgraph Core Infrastructure\n        SRV[Quickcharge Server]\n        GW[Payment Gateway]\n        PAYROLL[Payroll Deduction<br/>Module]\n    end\n\n    subgraph External Integrations\n        CBORD[CBORD Menu Mgmt]\n        KRONOS[Kronos Workforce]\n    end\n\n    CAF --> SRV\n    KIOSK --> SRV\n    MOBILE --> SRV\n    GIFT --> SRV\n    VEND --> SRV\n    SRV --> GW\n    SRV --> PAYROLL\n    MOBILE --> CBORD\n    PAYROLL --> KRONOS\n\n    style SRV fill:#0073e6,stroke:#fff,color:#fff\n    style GW fill:#28a745,stroke:#fff,color:#fff\n    style PAYROLL fill:#6f42c1,stroke:#fff,color:#fff",
+  "integration_points": [
+    {
+      "from": "Quickcharge Server",
+      "to": "CBORD Menu Management",
+      "type": "API",
+      "description": "Menu sync for cafeteria and mobile ordering"
+    },
+    {
+      "from": "Quickcharge Payroll Deduction Module",
+      "to": "Kronos Workforce",
+      "type": "API",
+      "description": "Payroll deduction batch feeds"
+    },
+    {
+      "from": "Quickcharge Server",
+      "to": "Payment Gateway – Campus Card",
+      "type": "Internal",
+      "description": "NFC campus card transaction processing"
+    }
+  ],
+  "_source": "fixture"
+}

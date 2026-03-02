@@ -1,0 +1,80 @@
+{
+  "bom_items": [
+    {
+      "item": "Quickcharge POS – Desktop",
+      "category": "hardware",
+      "quantity": 6,
+      "unit_context": "Main Cafeteria -- 4 registers, Gift Shop -- 2 registers",
+      "dependencies": ["Quickcharge Server", "Payment Gateway"]
+    },
+    {
+      "item": "Quickcharge Self-Service Kiosk",
+      "category": "hardware",
+      "quantity": 1,
+      "unit_context": "Coffee Kiosk – Lobby",
+      "dependencies": ["Quickcharge Server"]
+    },
+    {
+      "item": "Quickcharge Cashless Vending",
+      "category": "hardware",
+      "quantity": 6,
+      "unit_context": "3rd Floor vending, 6 machines",
+      "dependencies": ["Quickcharge Server"]
+    },
+    {
+      "item": "Quickcharge Mobile Ordering",
+      "category": "software",
+      "quantity": 1,
+      "unit_context": "Pain point: no mobile ordering option",
+      "dependencies": ["Quickcharge Server", "CBORD Menu Management"]
+    },
+    {
+      "item": "Quickcharge Payroll Deduction Module",
+      "category": "software",
+      "quantity": 1,
+      "unit_context": "Payroll deduction at Gift Shop, Kronos integration",
+      "dependencies": ["Quickcharge Server", "Kronos Workforce"]
+    },
+    {
+      "item": "Quickcharge Server",
+      "category": "infrastructure",
+      "quantity": 1,
+      "unit_context": "Central hub, required by all endpoints",
+      "dependencies": []
+    },
+    {
+      "item": "Payment Gateway – Campus Card",
+      "category": "infrastructure",
+      "quantity": 1,
+      "unit_context": "NFC campus card processing",
+      "dependencies": ["Quickcharge Server"]
+    }
+  ],
+  "api_integrations": [
+    {
+      "from": "Quickcharge Server",
+      "to": "CBORD Menu Management",
+      "type": "API",
+      "description": "Menu sync for cafeteria and mobile ordering"
+    },
+    {
+      "from": "Quickcharge Payroll Deduction Module",
+      "to": "Kronos Workforce",
+      "type": "API",
+      "description": "Payroll deduction batch feeds"
+    },
+    {
+      "from": "Quickcharge Server",
+      "to": "Payment Gateway – Campus Card",
+      "type": "Internal",
+      "description": "NFC campus card transaction processing"
+    }
+  ],
+  "summary": {
+    "total_hardware_items": 3,
+    "total_software_items": 4,
+    "total_integrations": 3,
+    "estimated_complexity": "high"
+  },
+  "_source": "fixture"
+}
