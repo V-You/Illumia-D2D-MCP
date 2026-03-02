@@ -1,30 +1,30 @@
 # Illumia D2D MCP
 
-**Discovery-to-Diagram** — an MCP server that translates messy campus walkthrough notes into a Quickcharge architecture, hardware BOM, and cross-sell leads for the Illumia ecosystem.
+**Discovery-to-Diagram** – an MCP server that translates messy campus walkthrough notes into a Quickcharge architecture, hardware BOM, and cross-sell leads for the Illumia ecosystem.
 
 ### The Discovery Hangover
 
-You walk through a hospital cafeteria, scribble notes about registers, mobile ordering requests, and payroll deduct needs. Back at your desk, you face hours of "discovery hangover" — turning raw notes into a professional proposal with the right hardware, integrations, and architecture. This tool automates that translation in seconds.
+Discovery on-site means walking through a hospital cafeteria, taking notes about registers, mobile ordering requests, and payroll deduct needs. Back at the desk, this turns into "discovery hangover" – translating raw notes into a professional proposal with the right hardware, integrations, and architecture. This tool automates that translation. Discovery notes can come from walk-throughs, collaboration, interviews, workshops, direct sessions.
 
-### The Ecosystem Gold Mine
+### The ecosystem gold mine
 
-Discovery conversations aren't just about the immediate Quickcharge deal. Every walkthrough contains hidden cross-sell opportunities for Campus ID, Campus Commerce, and Integrated Payments. This tool surfaces those leads automatically — one discovery call, four revenue streams.
+Every walkthrough contains hidden cross-sell opportunities for Campus ID, Campus Commerce, and Integrated Payments. This tool surfaces those leads – one discovery call, four revenue streams.
 
 ---
 
-## Quick Start
+## Quick start
 
 ### Prerequisites
 
 - **VS Code** with GitHub Copilot (MCP Apps support)
 - **Python ≥ 3.11**
-- **uv** — `curl -LsSf https://astral.sh/uv/install.sh | sh`
+- **uv** – `curl -LsSf https://astral.sh/uv/install.sh | sh`
 
 ### Add the MCP Server
 
 Add `.vscode/mcp.json` to your project:
 
-**Option A — Install from GitHub (recommended):**
+**Option A – Install from GitHub (recommended):**
 ```json
 {
   "servers": {
@@ -40,7 +40,7 @@ Add `.vscode/mcp.json` to your project:
 }
 ```
 
-**Option B — Local development:**
+**Option B – Local development:**
 ```json
 {
   "servers": {
@@ -69,25 +69,25 @@ Two slash-commands route your intent to the right tools:
 
 ## Usage
 
-### `/illumia` — Discovery to Architecture
+### `/illumia` – Discovery to Architecture
 
 Paste your walkthrough notes (or point to a file):
 
 > `/illumia` Here are my notes from the campus walkthrough: The hospital cafeteria has 3 registers, wants mobile ordering for staff, and needs to sync with their existing payroll system for employee payroll deduct. The gift shop uses a separate POS. Staff use physical prox cards.
 
 The agent runs three tools in sequence:
-1. **Ingest** — extracts locations, hardware, payment methods, integrations, pain points
-2. **Map** — generates a Quickcharge architecture flowchart (Mermaid.js)
-3. **BOM** — produces a hardware/software/integration bill of materials
+1. **Ingest** – extracts locations, hardware, payment methods, integrations, pain points
+2. **Map** – generates a Quickcharge architecture flowchart (Mermaid.js)
+3. **BOM** – produces a hardware/software/integration bill of materials
 
-### `/illumia-xsell` — Cross-Sell Detection
+### `/illumia-xsell` – Cross-Sell Detection
 
 > `/illumia-xsell` [same notes or file path]
 
 Scans for trigger phrases and surfaces leads for:
-- **Mobile ID** — physical prox cards → Transact Mobile Credential
-- **Unified Insights** — fragmented reporting → Transact Insights
-- **Sponsor Payments** — manual billing → Transact Sponsor Payments
+- **Mobile ID** – physical prox cards → Transact Mobile Credential
+- **Unified Insights** – fragmented reporting → Transact Insights
+- **Sponsor Payments** – manual billing → Transact Sponsor Payments
 
 ---
 
@@ -103,15 +103,15 @@ Scans for trigger phrases and surfaces leads for:
 
 ---
 
-## Demo Narratives
+## Demo narratives
 
 Three pre-built scenarios in `illumia_d2d_mcp/fixtures/narratives/`:
 
 | # | Narrative | File | Highlights |
 |---|---|---|---|
-| 1 | **The Discovery Hangover** | `discovery_hangover.md` | Primary demo — messy notes → proposal-ready architecture in seconds |
+| 1 | **The Discovery Hangover** | `discovery_hangover.md` | Primary demo – messy notes → proposal-ready architecture in seconds |
 | 2 | **The Ecosystem Gold Mine** | `ecosystem_goldmine.md` | Same notes surface 3 cross-sell leads across Illumia product lines |
-| 3 | **The Hospital Complex** | `hospital_complex.md` | Multi-location campus with every cross-sell trigger — shows scale |
+| 3 | **The Hospital Complex** | `hospital_complex.md` | Multi-location campus with every cross-sell trigger – shows scale |
 
 Run any narrative:
 ```
@@ -120,7 +120,7 @@ Run any narrative:
 
 ---
 
-## Environment Variables
+## Environment variables
 
 | Variable | Default | Purpose |
 |---|---|---|
@@ -132,7 +132,7 @@ Run any narrative:
 
 ```
 illumia_d2d_mcp/
-├── server.py              # FastMCP server — 5 tools + 5 ui:// resources
+├── server.py              # FastMCP server – 5 tools + 5 ui:// resources
 ├── note_parser.py         # Regex entity extraction from raw notes
 ├── product_catalog.py     # Bundled Quickcharge product catalog
 ├── cross_sell.py          # Cross-sell trigger detection (3 categories)
@@ -159,10 +159,35 @@ illumia_d2d_mcp/
 | Server not starting | Check `uv` is installed: `uv --version`. Ensure Python ≥ 3.11. |
 | Widgets show empty/zeros | Verify VS Code has MCP Apps support (Copilot Chat). Try restarting the MCP server. |
 | No cross-sell leads found | Ensure discovery notes contain trigger phrases (prox cards, separate POS, manual billing, etc.) |
-| `uvx` install fails | Run `uvx --from git+https://github.com/V-You/Illumia-D2D-MCP illumia-d2d-mcp` — requires git access to the repo. |
+| `uvx` install fails | Run `uvx --from git+https://github.com/V-You/Illumia-D2D-MCP illumia-d2d-mcp` – requires git access to the repo. |
 
 ---
 
 ## Security
 
-See [SECURITY.md](SECURITY.md). No real client data in demos. No API keys required. Zero network calls — all tools run locally against bundled data.
+See [SECURITY.md](SECURITY.md). No real client data in demos. No API keys required. Zero network calls – all tools run locally against bundled data.
+
+
+---
+
+
+**What this MCP server adds over a raw chat prompt:**
+
+1. **Codified domain knowledge** – The cross-sell trigger map, product catalog, and dependency chains are curated and persistent. An LLM freestyle might hallucinate product names, miss the "manual Excel billing" → Sponsor Payments connection, or invent integrations that don't exist. The tool guarantees accuracy against a known catalog.
+
+2. **Visual widgets** – MCP Apps render interactive HTML inline: a Mermaid flowchart, sortable BOM table, cross-sell lead cards with gap analyses. A plain chat gives you markdown text. The visual output is demo-grade, not conversation-grade.
+
+3. **Repeatable workflow via Skills** – `/illumia` runs a 3-step pipeline (ingest → map → BOM) with one command. No prompt engineering, no "you forgot the kiosk dependencies" back-and-forth. `/illumia-xsell` runs a different persona on the same data. The SE pastes notes and gets a consistent artifact every time.
+
+
+**Where a raw chat is just as good or better:**
+
+- The LLM already understands context better than regex. The parser overcounts POS registers and produces duplicate locations – problems an LLM wouldn't have.
+- With web access, an LLM could pull current product info from transactcampus.com rather than relying on a static catalog.
+- For a one-off analysis, installing an MCP server = overhead
+
+**The real value proposition isn't the local parsing – it's the platform:**
+
+- The tool is a skeleton waiting for APIs. If there is a product catalog API, pricing API, or ERP connector spec endpoint, this tool would pull live SKUs, generate accurate quotes, validate integration compatibility against real specs. The local regex/catalog is a proof-of-concept standing in for that future state.
+- Then, this tools would make selling repeatable and scalable (MCP server, widgets, codified trigger maps)
+- Widgets and Skills provide visual output and zero-prompt repeatable workflow
