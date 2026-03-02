@@ -170,6 +170,7 @@ See [SECURITY.md](SECURITY.md). No real client data in demos. No API keys requir
 
 ---
 
+## MCP vs LLM
 
 **What this MCP server adds over a raw chat prompt:**
 
@@ -186,8 +187,6 @@ See [SECURITY.md](SECURITY.md). No real client data in demos. No API keys requir
 - With web access, an LLM could pull current product info from transactcampus.com rather than relying on a static catalog.
 - For a one-off analysis, installing an MCP server = overhead
 
-**The real value proposition isn't the local parsing – it's the platform:**
+**The real value proposition is the platform:**
 
-- The tool is a skeleton waiting for APIs. If there is a product catalog API, pricing API, or ERP connector spec endpoint, this tool would pull live SKUs, generate accurate quotes, validate integration compatibility against real specs. The local regex/catalog is a proof-of-concept standing in for that future state.
-- Then, this tools would make selling repeatable and scalable (MCP server, widgets, codified trigger maps)
-- Widgets and Skills provide visual output and zero-prompt repeatable workflow
+The tool is a skeleton waiting for APIs. If there is a product catalog API, pricing API, or ERP connector spec endpoint, this tool would pull live SKUs, generate accurate quotes, validate integration compatibility against real specs. The local regex/catalog is a proof-of-concept standing in for that future state. Then, this tools would make selling repeatable and scalable (MCP server, widgets, codified trigger maps). Widgets and Skills provide visual output and repeatable workflow.
