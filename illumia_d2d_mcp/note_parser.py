@@ -86,8 +86,11 @@ _PAIN_PATTERNS: list[tuple[re.Pattern[str], str]] = [
     (re.compile(r"separate\s+(?:reporting|pos|system|vendor)", re.IGNORECASE), "fragmented_reporting"),
     (re.compile(r"different\s+(?:reporting|pos|system|vendor)", re.IGNORECASE), "fragmented_reporting"),
     (re.compile(r"(?:manual|manually)\s+(?:billing|billed|reconcil|process|entry|data)", re.IGNORECASE), "manual_process"),
+    (re.compile(r"billed?\s+manually", re.IGNORECASE), "manual_process"),
+    (re.compile(r"(?:via|using|with)\s+(?:excel|spreadsheets?)", re.IGNORECASE), "manual_process"),
     (re.compile(r"excel\s*(?:spreadsheet|billing|tracking)", re.IGNORECASE), "manual_process"),
     (re.compile(r"(?:can'?t|cannot|unable)\s+(?:see|view|track)\s+(?:real[- ]time|live)", re.IGNORECASE), "lack_of_visibility"),
+    (re.compile(r"no\s+unified\s+(?:view|report|dashboard|system)", re.IGNORECASE), "fragmented_reporting"),
     (re.compile(r"fragmented|siloed|silo", re.IGNORECASE), "fragmented_reporting"),
 ]
 
@@ -254,11 +257,16 @@ def _extract_integrations(text: str) -> list[dict[str, Any]]:
 
 def _extract_pain_points(text: str) -> list[dict[str, Any]]:
     pain_points: list[dict[str, Any]] = []
+    seen_texts: set[str] = set()
 
     for pattern, category in _PAIN_PATTERNS:
         for m in pattern.finditer(text):
+            quote = _get_source_quote(text, m.start(), m.end())
+            if quote in seen_texts:
+                continue
+            seen_texts.add(quote)
             pain_points.append({
-                "text": _get_source_quote(text, m.start(), m.end()),
+                "text": quote,
                 "category": category,
             })
 

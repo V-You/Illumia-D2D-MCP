@@ -1,88 +1,168 @@
-# Illumia-D2D-MCP
+# Illumia D2D MCP
 
-**Hook**
+**Discovery-to-Diagram** — an MCP server that translates messy campus walkthrough notes into a Quickcharge architecture, hardware BOM, and cross-sell leads for the Illumia ecosystem.
 
-Description
+### The Discovery Hangover
 
-## Scenario 1: 
+You walk through a hospital cafeteria, scribble notes about registers, mobile ordering requests, and payroll deduct needs. Back at your desk, you face hours of "discovery hangover" — turning raw notes into a professional proposal with the right hardware, integrations, and architecture. This tool automates that translation in seconds.
 
+### The Ecosystem Gold Mine
 
-
-## Scenario 2: 
-
-
-
-
-# Usage
-
-
-### 1. Prerequisites
-
-
-
-### 2. Add the MCP server to your project
-
-Add `.vscode/mcp.json` to your project. It tells VS Code how to start the MCP server.
-
-**Option A: Install from GitHub (recommended for your project):**
-
-
-
-**Option B: Local development (of this repo):**
-
-
-
-
-
-
-### 3. IDE Skills
-
-Two Skills route your intent to the right tools:
-
-| Skill | Persona | When to use |
-|---|---|---|
-
-
-
-
-### 4. Use `/illumia` in the chat
-
-
-
-
-
-### Example interactions
-
-
-
-
+Discovery conversations aren't just about the immediate Quickcharge deal. Every walkthrough contains hidden cross-sell opportunities for Campus ID, Campus Commerce, and Integrated Payments. This tool surfaces those leads automatically — one discovery call, four revenue streams.
 
 ---
 
-# Video
+## Quick Start
 
-include screencast
+### Prerequisites
 
-# Details
+- **VS Code** with GitHub Copilot (MCP Apps support)
+- **Python ≥ 3.11**
+- **uv** — `curl -LsSf https://astral.sh/uv/install.sh | sh`
 
-## Architecture
+### Add the MCP Server
 
+Add `.vscode/mcp.json` to your project:
+
+**Option A — Install from GitHub (recommended):**
+```json
+{
+  "servers": {
+    "illumia-d2d": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["--from", "git+https://github.com/V-You/Illumia-D2D-MCP", "illumia-d2d-mcp"],
+      "env": {
+        "ILLUMIA_DEMO_MODE": "auto"
+      }
+    }
+  }
+}
+```
+
+**Option B — Local development:**
+```json
+{
+  "servers": {
+    "illumia-d2d": {
+      "type": "stdio",
+      "command": "uv",
+      "args": ["run", "--directory", "/path/to/Illumia-D2D-MCP", "illumia-d2d-mcp"],
+      "env": {
+        "ILLUMIA_DEMO_MODE": "auto"
+      }
+    }
+  }
+}
+```
+
+### IDE Skills
+
+Two slash-commands route your intent to the right tools:
+
+| Skill | Persona | When to use |
+|---|---|---|
+| `/illumia` | Solutions Engineer (Builder) | Translate discovery notes → architecture + BOM |
+| `/illumia-xsell` | Ecosystem Strategist (Revenue Multiplier) | Find cross-sell leads for Campus ID, Commerce, Payments |
+
+---
+
+## Usage
+
+### `/illumia` — Discovery to Architecture
+
+Paste your walkthrough notes (or point to a file):
+
+> `/illumia` Here are my notes from the campus walkthrough: The hospital cafeteria has 3 registers, wants mobile ordering for staff, and needs to sync with their existing payroll system for employee payroll deduct. The gift shop uses a separate POS. Staff use physical prox cards.
+
+The agent runs three tools in sequence:
+1. **Ingest** — extracts locations, hardware, payment methods, integrations, pain points
+2. **Map** — generates a Quickcharge architecture flowchart (Mermaid.js)
+3. **BOM** — produces a hardware/software/integration bill of materials
+
+### `/illumia-xsell` — Cross-Sell Detection
+
+> `/illumia-xsell` [same notes or file path]
+
+Scans for trigger phrases and surfaces leads for:
+- **Mobile ID** — physical prox cards → Transact Mobile Credential
+- **Unified Insights** — fragmented reporting → Transact Insights
+- **Sponsor Payments** — manual billing → Transact Sponsor Payments
+
+---
 
 ## Tools
 
+| Tool | Purpose | Widget |
+|---|---|---|
+| `ingest_discovery_notes` | Parse raw notes into structured entities | `ui://parsed-notes.html` |
+| `map_to_quickcharge_stack` | Match to product catalog, generate architecture flowchart | `ui://workflow-map.html` |
+| `generate_system_bom` | Produce hardware/software/integration BOM with quantities | `ui://system-bom.html` |
+| `detect_cross_sell_leads` | Scan for cross-sell triggers across 3 Illumia product lines | `ui://cross-sell-dashboard.html` |
+| `query_illumia_docs` | Query bundled Transact/CBORD product documentation | `ui://docs-panel.html` |
+
+---
+
+## Demo Narratives
+
+Three pre-built scenarios in `illumia_d2d_mcp/fixtures/narratives/`:
+
+| # | Narrative | File | Highlights |
+|---|---|---|---|
+| 1 | **The Discovery Hangover** | `discovery_hangover.md` | Primary demo — messy notes → proposal-ready architecture in seconds |
+| 2 | **The Ecosystem Gold Mine** | `ecosystem_goldmine.md` | Same notes surface 3 cross-sell leads across Illumia product lines |
+| 3 | **The Hospital Complex** | `hospital_complex.md` | Multi-location campus with every cross-sell trigger — shows scale |
+
+Run any narrative:
+```
+/illumia @workspace /illumia_d2d_mcp/fixtures/narratives/discovery_hangover.md
+```
+
+---
 
 ## Environment Variables
 
-| Variable | Required | Purpose |
+| Variable | Default | Purpose |
 |---|---|---|
-| `..._API_KEY` | No | ... |
-| `...` | No | ... |
+| `ILLUMIA_DEMO_MODE` | `auto` | `live` = local parsing only · `mock` = fixture data only · `auto` = live with fallback to fixtures |
 
-## Project Structure
+---
 
+## Architecture
 
+```
+illumia_d2d_mcp/
+├── server.py              # FastMCP server — 5 tools + 5 ui:// resources
+├── note_parser.py         # Regex entity extraction from raw notes
+├── product_catalog.py     # Bundled Quickcharge product catalog
+├── cross_sell.py          # Cross-sell trigger detection (3 categories)
+├── widgets.py             # HTML widget renderers (JS-driven, MCP Apps)
+├── demo_mode.py           # Live/mock/auto fallback with @with_fallback
+├── errors.py              # Consistent error envelope
+├── docs_context.md        # Bundled Transact/CBORD documentation
+└── fixtures/
+    ├── narratives/        # 3 demo narrative scripts (.md)
+    ├── ingest_discovery_notes.json
+    ├── map_to_quickcharge_stack.json
+    ├── generate_system_bom.json
+    └── detect_cross_sell_leads.json
+```
+
+**Stack:** FastMCP (Python) · stdio transport · MCP Apps (`ui://` resources) · Mermaid.js · Hatchling build · uv/uvx distribution
 
 ---
 
 ## Troubleshooting
 
+| Symptom | Fix |
+|---|---|
+| Server not starting | Check `uv` is installed: `uv --version`. Ensure Python ≥ 3.11. |
+| Widgets show empty/zeros | Verify VS Code has MCP Apps support (Copilot Chat). Try restarting the MCP server. |
+| No cross-sell leads found | Ensure discovery notes contain trigger phrases (prox cards, separate POS, manual billing, etc.) |
+| `uvx` install fails | Run `uvx --from git+https://github.com/V-You/Illumia-D2D-MCP illumia-d2d-mcp` — requires git access to the repo. |
+
+---
+
+## Security
+
+See [SECURITY.md](SECURITY.md). No real client data in demos. No API keys required. Zero network calls — all tools run locally against bundled data.
