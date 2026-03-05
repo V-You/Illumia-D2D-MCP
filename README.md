@@ -1,6 +1,6 @@
 # Illumia D2D MCP
 
-**Discovery-to-Diagram** – an MCP server that translates messy campus walkthrough notes into a Quickcharge architecture, hardware BOM, and cross-sell leads for the Illumia ecosystem.
+**Discovery-to-Diagram** – an MCP server that translates campus walkthrough notes into a Quickcharge architecture, hardware BOM, and cross-sell leads for the Illumia ecosystem.
 
 | `/illumia` Here are my discovery notes … | `/illumia-xsell` Here are my discovery notes … | 
 | :---: | :----: |
@@ -8,7 +8,7 @@
 
 ### The discovery hangover
 
-Discovery on-site means walking through a hospital cafeteria, taking notes about registers, mobile ordering requests, and payroll deduct needs. Back at the desk, this turns into "discovery hangover" – translating raw notes into a professional proposal with the right hardware, integrations, and architecture. This tool automates that translation. Discovery notes can come from walk-throughs, collaboration, interviews, workshops, direct sessions.
+Discovery on-site means walking through a cafeteria or campus, taking notes about registers, mobile ordering requests, and payroll deduct needs. Back at the desk, this turns into "discovery hangover" – translating raw notes into a professional proposal with the right hardware, integrations, and architecture. This tool automates that translation. Discovery notes can come from walk-throughs, collaboration, interviews, workshops, direct sessions.
 
 ### The ecosystem gold mine
 
@@ -73,9 +73,9 @@ Two slash-commands route your intent to the right tools:
 
 ## Usage
 
-### `/illumia` – Discovery to Architecture
+### `/illumia` – Discovery to architecture
 
-Paste your walkthrough notes (or point to a file):
+Paste walkthrough notes (or point to a file):
 
 > `/illumia` Here are my notes from the campus walkthrough: The hospital cafeteria has 3 registers, wants mobile ordering for staff, and needs to sync with their existing payroll system for employee payroll deduct. The gift shop uses a separate POS. Staff use physical prox cards.
 
@@ -84,7 +84,7 @@ The agent runs three tools in sequence:
 2. **Map** – <kbd><img src="img/illumia3.png" width="22px" /></kbd> generates a Quickcharge architecture flowchart (Mermaid.js)
 3. **BOM** – produces a hardware/software/integration bill of materials
 
-### `/illumia-xsell` – Cross-Sell Detection
+### `/illumia-xsell` – Cross-sell detection
 
 > `/illumia-xsell` [same notes or file path]
 
@@ -100,27 +100,23 @@ Scans for trigger phrases and surfaces leads for:
 | Tool | Purpose | Widget |
 |---|---|---|
 | `ingest_discovery_notes` | Parse raw notes into structured entities | `ui://parsed-notes.html` |
-| `map_to_quickcharge_stack` | Match to product catalog, generate architecture flowchart | `ui://workflow-map.html` |
-| `generate_system_bom` | Produce hardware/software/integration BOM with quantities | `ui://system-bom.html` |
-| `detect_cross_sell_leads` | Scan for cross-sell triggers across 3 Illumia product lines | `ui://cross-sell-dashboard.html` |
-| `query_illumia_docs` | Query bundled Transact/CBORD product documentation | `ui://docs-panel.html` |
+| `map_to_quickcharge_stack` | Match to catalog, generate architecture flowchart | `ui://workflow-map.html` |
+| `generate_system_bom` | Produce HW/SW/integration BOM with quantities | `ui://system-bom.html` |
+| `detect_cross_sell_leads` | Scan for cross-sell across 3 Illumia product lines | `ui://cross-sell-dashboard.html` |
+| `query_illumia_docs` | Query bundled Transact/CBORD documentation | `ui://docs-panel.html` |
 
 ---
 
 ## Demo narratives
 
-Three pre-built scenarios in `illumia_d2d_mcp/fixtures/narratives/`:
+Run any narrative: `/illumia @workspace /illumia_d2d_mcp/fixtures/narratives/discovery_hangover.md`. Three pre-built scenarios in `illumia_d2d_mcp/fixtures/narratives/`:
 
 | # | Narrative | File | Highlights |
 |---|---|---|---|
-| 1 | **The Discovery Hangover** | `discovery_hangover.md` | Primary demo – messy notes → proposal-ready architecture in seconds |
-| 2 | **The Ecosystem Gold Mine** | `ecosystem_goldmine.md` | Same notes surface 3 cross-sell leads across Illumia product lines |
-| 3 | **The Hospital Complex** | `hospital_complex.md` | Multi-location campus with every cross-sell trigger – shows scale |
+| 1 | **Discovery Hangover** | `discovery_hangover.md` | Messy notes → proposal-ready architecture in seconds |
+| 2 | **Ecosystem Gold Mine** | `ecosystem_goldmine.md` | Same notes surface 3 cross-sell leads across Illumia |
+| 3 | **Hospital Complex** | `hospital_complex.md` | Scale up to multi-location campus (every cs trigger) |
 
-Run any narrative:
-```
-/illumia @workspace /illumia_d2d_mcp/fixtures/narratives/discovery_hangover.md
-```
 
 ---
 
