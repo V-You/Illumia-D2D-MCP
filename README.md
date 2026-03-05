@@ -2,7 +2,7 @@
 
 **Discovery-to-Diagram** – an MCP server that translates messy campus walkthrough notes into a Quickcharge architecture, hardware BOM, and cross-sell leads for the Illumia ecosystem.
 
-| `/illumia` Here are my iscovery notes … | `/illumia-xsell` Here are my discovery notes … | 
+| `/illumia` Here are my discovery notes … | `/illumia-xsell` Here are my discovery notes … | 
 | :---: | :----: |
 | <kbd><img src="img/illumia1.png" width="99px" /></kbd> | <kbd><img src="img/illumia2.png" width="99px" /></kbd> | 
 
