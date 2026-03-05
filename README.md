@@ -2,7 +2,11 @@
 
 **Discovery-to-Diagram** – an MCP server that translates messy campus walkthrough notes into a Quickcharge architecture, hardware BOM, and cross-sell leads for the Illumia ecosystem.
 
-### The Discovery Hangover
+| `/illumia` Here are my <br>discovery notes | `/illumia-xsell` Here are my <br>discovery notes | 
+| :---: | :----: |
+| <kbd><img src="img/illumia1.png" width="99px" /></kbd> | <kbd><img src="img/illumia2.png" width="99px" /></kbd> | 
+
+### The discovery hangover
 
 Discovery on-site means walking through a hospital cafeteria, taking notes about registers, mobile ordering requests, and payroll deduct needs. Back at the desk, this turns into "discovery hangover" – translating raw notes into a professional proposal with the right hardware, integrations, and architecture. This tool automates that translation. Discovery notes can come from walk-throughs, collaboration, interviews, workshops, direct sessions.
 
