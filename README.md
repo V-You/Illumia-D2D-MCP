@@ -124,7 +124,7 @@ Run any narrative: `/illumia @workspace /illumia_d2d_mcp/fixtures/narratives/dis
 
 | Variable | Default | Purpose |
 |---|---|---|
-| `ILLUMIA_DEMO_MODE` | `auto` | `live` = local parsing only · `mock` = fixture data only · `auto` = live with fallback to fixtures |
+| `ILLUMIA_DEMO_MODE` | `auto` | `live` = local parsing only <br>`mock` = fixture data only <br>`auto` = live with fallback to fixtures |
 
 ---
 
