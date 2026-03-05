@@ -81,7 +81,7 @@ Paste your walkthrough notes (or point to a file):
 
 The agent runs three tools in sequence:
 1. **Ingest** – extracts locations, hardware, payment methods, integrations, pain points
-2. **Map** – <kbd><img src="img/illumia1.png" width="22px" /></kbd> generates a Quickcharge architecture flowchart (Mermaid.js)
+2. **Map** – <kbd><img src="img/illumia3.png" width="22px" /></kbd> generates a Quickcharge architecture flowchart (Mermaid.js)
 3. **BOM** – produces a hardware/software/integration bill of materials
 
 ### `/illumia-xsell` – Cross-Sell Detection
@@ -180,7 +180,7 @@ See [SECURITY.md](SECURITY.md). No real client data in demos. No API keys requir
 
 1. **Codified domain knowledge** – The cross-sell trigger map, product catalog, and dependency chains are curated and persistent. An LLM freestyle might hallucinate product names, miss the "manual Excel billing" → Sponsor Payments connection, or invent integrations that don't exist. The tool guarantees accuracy against a known catalog.
 
-2. **Visual widgets** – MCP Apps render interactive HTML inline: a Mermaid flowchart <kbd><img src="img/illumia1.png" width="22px" /></kbd>, sortable BOM table, cross-sell lead cards with gap analyses. A plain chat gives you markdown text. The visual output is demo-grade, not conversation-grade.
+2. **Visual widgets** – MCP Apps render interactive HTML inline: a Mermaid flowchart <kbd><img src="img/illumia3.png" width="22px" /></kbd>, sortable BOM table, cross-sell lead cards with gap analyses. A plain chat gives you markdown text. The visual output is demo-grade, not conversation-grade.
 
 3. **Repeatable workflow via Skills** – `/illumia` runs a 3-step pipeline (ingest → map → BOM) with one command. No prompt engineering, no "you forgot the kiosk dependencies" back-and-forth. `/illumia-xsell` runs a different persona on the same data. The SE pastes notes and gets a consistent artifact every time.
 
