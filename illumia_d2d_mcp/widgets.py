@@ -321,7 +321,16 @@ def render_workflow_map(data: dict[str, Any]) -> str:
       // mermaid
       const mc = document.getElementById('mermaid-container');
       mc.innerHTML = '<pre class="mermaid">' + esc(graph) + '</pre>';
-      if (window.mermaid) { window.mermaid.run(); }
+      
+      // wait for mermaid to load, then render
+      const waitForMermaid = () => {
+        if (window.mermaid && window.mermaid.run) {
+          window.mermaid.run();
+        } else {
+          setTimeout(waitForMermaid, 100);
+        }
+      };
+      waitForMermaid();
 
       // product matches table
       let mRows = '';
