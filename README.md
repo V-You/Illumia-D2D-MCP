@@ -66,8 +66,8 @@ Two slash-commands route your intent to the right tools:
 
 | Skill | Persona | When to use |
 |---|---|---|
-| `/illumia` | Solutions Engineer (Builder) | Translate discovery notes → architecture + BOM |
-| `/illumia-xsell` | Ecosystem Strategist (Revenue Multiplier) | Find cross-sell leads for Campus ID, Commerce, Payments |
+| `/illumia` | Solutions Engineer | Translate discovery notes → architecture + BOM |
+| `/illumia-xsell` | Ecosystem Strategist | Find leads for Campus ID, others |
 
 ---
 
