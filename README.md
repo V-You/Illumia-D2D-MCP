@@ -101,9 +101,9 @@ Scans for trigger phrases and surfaces leads for:
 |---|---|---|
 | `ingest_discovery_notes` | Parse raw notes into structured entities | `ui://parsed-notes.html` |
 | `map_to_quickcharge_stack` | Match to catalog, generate architecture flowchart | `ui://workflow-map.html` |
-| `generate_system_bom` | Produce HW/SW/integration BOM with quantities | `ui://system-bom.html` |
-| `detect_cross_sell_leads` | Scan for cross-sell across 3 Illumia product lines | `ui://cross-sell-dashboard.html` |
-| `query_illumia_docs` | Query bundled Transact/CBORD documentation | `ui://docs-panel.html` |
+| `generate_system_bom` | Produce HW/SW/integration BOM + quantities | `ui://system-bom.html` |
+| `detect_cross_sell_leads` | Scan for cross-sell across 3 product lines | `ui://cross-sell-dashboard.html` |
+| `query_illumia_docs` | Query bundled Transact/CBORD docs | `ui://docs-panel.html` |
 
 ---
 
